@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteBuddy 🍔 - Good Food. Great Deals. Student Prices.</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍔</text></svg>">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="announcement-content">
+            <span>⚡ <strong>STUDENT SPECIAL:</strong> Free campus delivery on orders above ₹199! Use Code: <mark>STUDENT50</mark> for ₹50 OFF 🎉</span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <span class="logo-icon">🍔</span>
+                <span class="logo-text">Bite<span class="highlight">Buddy</span></span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#menu-section" class="nav-link"><i class="fa-solid fa-utensils"></i> Menu</a>
+                <a href="#deals-section" class="nav-link"><i class="fa-solid fa-fire"></i> Deals</a>
+                <a href="#student-section" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Student Picks</a>
+                <a href="#recommendation-section" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> For You</a>
+                <a href="#orders-section" class="nav-link" id="nav-orders-link"><i class="fa-solid fa-clock-rotate-left"></i> Orders</a>
+            </nav>
+
+            <!-- Search Bar in Header -->
+            <div class="header-search">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="header-search-input" placeholder="Search pizza, burger, rolls..." autocomplete="off">
+                <button class="clear-search-btn" id="clear-search-btn" aria-label="Clear Search">&times;</button>
+            </div>
+
+            <!-- Navbar Actions -->
+            <div class="nav-actions">
+                <!-- Dark Mode Toggle -->
+                <button class="icon-btn theme-toggle" id="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
+                    <i class="fa-solid fa-moon moon-icon"></i>
+                    <i class="fa-solid fa-sun sun-icon"></i>
+                </button>
+
+                <!-- Favorites Trigger -->
+                <button class="icon-btn" id="favorites-modal-btn" aria-label="Favorites" title="My Favorites">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="badge" id="fav-badge">0</span>
+                </button>
+
+                <!-- Cart Button -->
+                <button class="cart-btn" id="cart-drawer-btn" aria-label="View Shopping Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-btn-text">Cart</span>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Open Navigation Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+        <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+            <div class="mobile-nav-header">
+                <div class="logo">
+                    <span class="logo-icon">🍔</span>
+                    <span class="logo-text">Bite<span class="highlight">Buddy</span></span>
+                </div>
+                <button class="close-btn" id="close-mobile-nav">&times;</button>
+            </div>
+            <div class="mobile-nav-links">
+                <a href="#home" class="mobile-nav-link active"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="#menu-section" class="mobile-nav-link"><i class="fa-solid fa-utensils"></i> Food Menu</a>
+                <a href="#deals-section" class="mobile-nav-link"><i class="fa-solid fa-fire"></i> Student Deals</a>
+                <a href="#student-section" class="mobile-nav-link"><i class="fa-solid fa-graduation-cap"></i> Student Picks (Under ₹99)</a>
+                <a href="#recommendation-section" class="mobile-nav-link"><i class="fa-solid fa-robot"></i> Recommended For You</a>
+                <a href="#orders-section" class="mobile-nav-link"><i class="fa-solid fa-box"></i> My Orders</a>
+                <a href="#favorites-view" class="mobile-nav-link" id="mobile-fav-link"><i class="fa-solid fa-heart"></i> My Favorites (<span id="mobile-fav-count">0</span>)</a>
+            </div>
+            <div class="mobile-nav-footer">
+                <p>🎓 Student Budget Friendly Food Delivery</p>
+                <div class="mode-switch-row">
+                    <span>Dark Mode</span>
+                    <button class="toggle-switch-btn" id="mobile-theme-switch"></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="pulse-dot"></span> ⚡ 15-Minute Campus Delivery
+                    </div>
+                    <h1 class="hero-title">
+                        Good Food. <br>
+                        <span class="gradient-text">Great Deals.</span> <br>
+                        Student Prices.
+                    </h1>
+                    <p class="hero-subtitle">
+                        Your favorite food without breaking your budget. Delicious rolls, loaded burgers, spicy biryani & late-night munchies starting at just <strong>₹39</strong>!
+                    </p>
+                    <div class="hero-cta-buttons">
+                        <a href="#menu-section" class="btn btn-primary btn-lg">
+                            <i class="fa-solid fa-utensils"></i> Explore Food
+                        </a>
+                        <a href="#deals-section" class="btn btn-secondary btn-lg">
+                            <i class="fa-solid fa-fire"></i> Today's Best Deals
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">₹39+</span>
+                            <span class="stat-label">Budget Prices</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">15 Min</span>
+                            <span class="stat-label">Hostel Delivery</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">4.8★</span>
+                            <span class="stat-label">10k+ Student Reviews</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-card-glow"></div>
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80" alt="Delicious Pizza" class="hero-image">
+                    
+                    <!-- Floating Hero Floating Pills -->
+                    <div class="floating-pill pill-1">
+                        <span class="pill-emoji">🍕</span>
+                        <div class="pill-info">
+                            <strong>Cheese Burst Pizza</strong>
+                            <span class="pill-price">₹129 <del>₹199</del></span>
+                        </div>
+                    </div>
+                    <div class="floating-pill pill-2">
+                        <span class="pill-emoji">🔥</span>
+                        <div class="pill-info">
+                            <strong>34% OFF Combo</strong>
+                            <span class="pill-sub">Student Special</span>
+                        </div>
+                    </div>
+                    <div class="floating-pill pill-3">
+                        <span class="pill-emoji">⭐</span>
+                        <div class="pill-info">
+                            <strong>4.9 Rating</strong>
+                            <span class="pill-sub">5,000+ Campus Orders</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOD CATEGORIES SECTION -->
+        <section class="categories-section" id="categories-section">
+            <div class="section-container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Explore By Preference</span>
+                    <h2 class="section-title">What are you craving today? 😋</h2>
+                </div>
+                <div class="categories-wrapper">
+                    <div class="categories-scroll" id="categories-container">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEARCH & FILTERS BAR -->
+        <section class="filters-bar-section" id="filters-section">
+            <div class="section-container">
+                <div class="filters-card">
+                    <!-- Search Input -->
+                    <div class="filter-search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="main-search-input" placeholder="Search food items, categories, or restaurants...">
+                    </div>
+
+                    <div class="filter-controls-group">
+                        <!-- Veg / Non-Veg Toggle -->
+                        <div class="veg-toggle-container">
+                            <button class="veg-filter-btn active" data-veg="all">All</button>
+                            <button class="veg-filter-btn" data-veg="veg"><span class="dot veg-dot"></span> Veg</button>
+                            <button class="veg-filter-btn" data-veg="non-veg"><span class="dot non-veg-dot"></span> Non-Veg</button>
+                        </div>
+
+                        <!-- Price Sorting -->
+                        <div class="filter-select-wrapper">
+                            <label for="sort-select"><i class="fa-solid fa-arrow-down-up-wide"></i> Sort By:</label>
+                            <select id="sort-select" class="custom-select">
+                                <option value="default">Relevance & Popularity</option>
+                                <option value="price-low">Price: Low → High 📈</option>
+                                <option value="price-high">Price: High → Low 📉</option>
+                                <option value="rating-high">Highest Rated ⭐</option>
+                                <option value="discount-high">Biggest Discount 🔥</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Range & Rating Chips -->
+                <div class="chips-filter-row">
+                    <div class="filter-chips-group">
+                        <span class="chips-label"><i class="fa-solid fa-wallet"></i> Price Range:</span>
+                        <div class="chips-container" id="price-chips-container">
+                            <button class="chip active" data-price="all">All Prices</button>
+                            <button class="chip" data-price="under-50">Under ₹50</button>
+                            <button class="chip" data-price="50-100">₹50 – ₹100</button>
+                            <button class="chip" data-price="100-150">₹100 – ₹150</button>
+                            <button class="chip" data-price="150-250">₹150 – ₹250</button>
+                            <button class="chip" data-price="250-plus">₹250+</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-chips-group">
+                        <span class="chips-label"><i class="fa-solid fa-star"></i> Min Rating:</span>
+                        <div class="chips-container" id="rating-chips-container">
+                            <button class="chip active" data-rating="all">All Ratings</button>
+                            <button class="chip" data-rating="4.5">⭐ 4.5+</button>
+                            <button class="chip" data-rating="4.0">⭐ 4.0+</button>
+                            <button class="chip" data-rating="3.5">⭐ 3.5+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN FOOD MENU SECTION -->
+        <section class="menu-section" id="menu-section">
+            <div class="section-container">
+                <div class="menu-header-row">
+                    <div>
+                        <h2 class="section-title">Food Menu 🍕</h2>
+                        <p class="section-subtitle" id="active-filter-summary">Showing all available budget-friendly food items</p>
+                    </div>
+                    <div class="menu-actions">
+                        <button class="btn btn-outline btn-sm" id="reset-filters-btn">
+                            <i class="fa-solid fa-rotate-left"></i> Reset Filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Food Grid Container -->
+                <div class="food-grid" id="food-grid">
+                    <!-- Food Cards injected dynamically via JS -->
+                </div>
+
+                <!-- Empty Search/Filter State -->
+                <div class="empty-state hidden" id="empty-food-state">
+                    <div class="empty-icon">🔍</div>
+                    <h3>No food items found matching your criteria</h3>
+                    <p>Try searching for something else or clearing your price and rating filters.</p>
+                    <button class="btn btn-primary" id="empty-reset-btn">Reset All Filters</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🔥 STUDENT DEALS SECTION -->
+        <section class="deals-section" id="deals-section">
+            <div class="section-container">
+                <div class="deals-header">
+                    <div class="deals-title-box">
+                        <span class="deals-badge">🔥 Pocket Savers</span>
+                        <h2 class="section-title text-white">Best Student Deals & Combos</h2>
+                        <p class="text-white-70">Curated combo meals designed for maximum taste at minimum damage to your wallet!</p>
+                    </div>
+                </div>
+
+                <div class="deals-grid" id="deals-grid">
+                    <!-- Deals cards populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 🎓 STUDENT PICKS (UNDER ₹99) SECTION -->
+        <section class="student-section" id="student-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">🎓 Student Mode</span>
+                    <h2 class="section-title">Student Friendly Picks Under ₹99 💰</h2>
+                    <p class="section-subtitle">Quick bites, late night hunger busters, and daily college snacks all priced at or below ₹99!</p>
+                </div>
+
+                <!-- Student Sub-category Tabs -->
+                <div class="student-tabs" id="student-tabs">
+                    <button class="student-tab active" data-tab="all">All Under ₹99</button>
+                    <button class="student-tab" data-tab="snacks">⚡ Quick Snacks</button>
+                    <button class="student-tab" data-tab="lunch">🍱 College Lunch</button>
+                    <button class="student-tab" data-tab="evening">☕ Evening Snacks</button>
+                    <button class="student-tab" data-tab="latenight">🌙 Late-Night Food</button>
+                </div>
+
+                <div class="food-grid" id="student-picks-grid">
+                    <!-- Student items injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 🤖 RECOMMENDATION SYSTEM SECTION -->
+        <section class="recommendation-section" id="recommendation-section">
+            <div class="section-container">
+                <div class="recommendation-banner" id="recommendation-banner">
+                    <div class="recommendation-header">
+                        <div class="bot-icon">🤖</div>
+                        <div>
+                            <span class="rec-badge">Smart AI Recommendation Engine</span>
+                            <h2 class="rec-title">Recommended For You</h2>
+                            <p class="rec-reason" id="rec-reason-text">Based on your favorites, order history, and category preferences</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-light btn-sm" id="refresh-rec-btn">
+                        <i class="fa-solid fa-arrows-rotate"></i> Refresh Recommendations
+                    </button>
+                </div>
+
+                <div class="food-grid" id="recommendation-grid">
+                    <!-- Recommended items injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 📦 ORDER HISTORY SECTION -->
+        <section class="orders-section" id="orders-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Track & Reorder</span>
+                    <h2 class="section-title">Your Order History 📦</h2>
+                    <p class="section-subtitle">View your past orders, delivery status, and re-order with 1-click!</p>
+                </div>
+
+                <div class="orders-list" id="orders-list-container">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 🛒 SHOPPING CART DRAWER PANEL -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-drawer-header">
+            <div class="cart-header-title">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h3>Your Cart (<span id="cart-drawer-count">0</span>)</h3>
+            </div>
+            <button class="close-btn" id="close-cart-drawer">&times;</button>
+        </div>
+
+        <!-- Free Delivery Progress Bar -->
+        <div class="delivery-progress-container" id="delivery-progress-container">
+            <div class="delivery-progress-text" id="delivery-progress-text">
+                Add ₹199 more for FREE Campus Delivery! 🚚
+            </div>
+            <div class="progress-bar-track">
+                <div class="progress-bar-fill" id="delivery-progress-bar" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <div class="cart-drawer-body" id="cart-drawer-body">
+            <!-- Empty Cart State -->
+            <div class="cart-empty-state" id="cart-empty-state">
+                <div class="cart-empty-icon">🛒</div>
+                <h4>Your cart is currently empty</h4>
+                <p>Looks like you haven't added any tasty treats yet!</p>
+                <button class="btn btn-primary btn-sm" id="cart-explore-btn">Browse Food Menu</button>
+            </div>
+
+            <!-- Cart Items List Container -->
+            <div class="cart-items-list" id="cart-items-list">
+                <!-- JS Populated Cart Items -->
+            </div>
+        </div>
+
+        <!-- Cart Footer / Summary -->
+        <div class="cart-drawer-footer" id="cart-drawer-footer">
+            
+            <!-- Coupon Code Section -->
+            <div class="coupon-section">
+                <div class="coupon-header">
+                    <span><i class="fa-solid fa-ticket"></i> Apply Student Coupon</span>
+                </div>
+                <div class="coupon-input-group">
+                    <input type="text" id="coupon-input" placeholder="Enter coupon (e.g. STUDENT50)" style="text-transform: uppercase;">
+                    <button class="btn btn-secondary btn-sm" id="apply-coupon-btn">Apply</button>
+                </div>
+                
+                <!-- Quick Available Coupons Chips -->
+                <div class="quick-coupons">
+                    <span class="quick-coupon-tag" data-code="STUDENT50" title="Get ₹50 OFF on ₹199+">🏷️ STUDENT50 (-₹50)</span>
+                    <span class="quick-coupon-tag" data-code="BITE20" title="Get 20% OFF">🏷️ BITE20 (20% OFF)</span>
+                    <span class="quick-coupon-tag" data-code="FREEHOP" title="Free Delivery">🏷️ FREEHOP (Free Del)</span>
+                </div>
+
+                <!-- Applied Coupon Message -->
+                <div class="applied-coupon-msg hidden" id="applied-coupon-msg">
+                    <span id="coupon-success-text"></span>
+                    <button class="remove-coupon-btn" id="remove-coupon-btn">&times;</button>
+                </div>
+            </div>
+
+            <!-- Order Bill Breakdown -->
+            <div class="bill-breakdown">
+                <div class="bill-row">
+                    <span>Subtotal</span>
+                    <span id="bill-subtotal">₹0</span>
+                </div>
+                <div class="bill-row green-text" id="bill-discount-row">
+                    <span>Discount Savings</span>
+                    <span id="bill-discount">-₹0</span>
+                </div>
+                <div class="bill-row" id="bill-delivery-row">
+                    <span>Delivery Fee</span>
+                    <span id="bill-delivery">₹20</span>
+                </div>
+                <div class="bill-row font-bold total-row">
+                    <span>Grand Total</span>
+                    <span class="total-price" id="bill-total">₹0</span>
+                </div>
+            </div>
+
+            <!-- Checkout CTA Button -->
+            <button class="btn btn-primary btn-block btn-lg" id="proceed-checkout-btn">
+                <span>Proceed to Checkout</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ❤️ MY FAVORITES MODAL -->
+    <div class="modal-overlay" id="fav-modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-heart red-text"></i> My Favorites</h3>
+                <button class="close-btn" id="close-fav-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="food-grid" id="favorites-grid">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="empty-state hidden" id="empty-fav-state">
+                    <div class="empty-icon">❤️</div>
+                    <h4>No favorite items saved yet</h4>
+                    <p>Click the ❤️ icon on any food item to save it here for quick ordering!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 💳 CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkout-modal-overlay">
+        <div class="modal-card checkout-modal-card">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> Complete Your Order</h3>
+                <button class="close-btn" id="close-checkout-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkout-form">
+                    
+                    <!-- Customer Details -->
+                    <div class="form-section">
+                        <h4><i class="fa-solid fa-user"></i> Student Details</h4>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="cust-name">Full Name *</label>
+                                <input type="text" id="cust-name" required placeholder="e.g. Rahul Sharma">
+                            </div>
+                            <div class="form-group">
+                                <label for="cust-phone">Mobile Number *</label>
+                                <input type="tel" id="cust-phone" required placeholder="e.g. 9876543210" pattern="[0-9]{10}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delivery Details -->
+                    <div class="form-section">
+                        <h4><i class="fa-solid fa-location-dot"></i> Campus Delivery Address</h4>
+                        <div class="form-group">
+                            <label for="cust-hostel">Hostel Name / College Block *</label>
+                            <input type="text" id="cust-hostel" required placeholder="e.g. Hostel 4, Block B, Main Campus">
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="cust-room">Room / Floor No. *</label>
+                                <input type="text" id="cust-room" required placeholder="e.g. Room 302">
+                            </div>
+                            <div class="form-group">
+                                <label for="cust-notes">Delivery Instructions (Optional)</label>
+                                <input type="text" id="cust-notes" placeholder="e.g. Leave at security desk / Call on reach">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="form-section">
+                        <h4><i class="fa-solid fa-wallet"></i> Select Payment Method</h4>
+                        <div class="payment-options-grid">
+                            
+                            <label class="payment-option active">
+                                <input type="radio" name="payment-method" value="UPI" checked>
+                                <div class="payment-content">
+                                    <div class="payment-icon">📱</div>
+                                    <div class="payment-info">
+                                        <strong>Instant UPI</strong>
+                                        <span>GPay, PhonePe, Paytm, BHIM</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment-method" value="Cash on Delivery">
+                                <div class="payment-content">
+                                    <div class="payment-icon">💵</div>
+                                    <div class="payment-info">
+                                        <strong>Cash on Delivery (COD)</strong>
+                                        <span>Pay with cash when order arrives</span>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment-method" value="Credit/Debit Card">
+                                <div class="payment-content">
+                                    <div class="payment-icon">💳</div>
+                                    <div class="payment-info">
+                                        <strong>Credit / Debit Card</strong>
+                                        <span>Visa, Mastercard, RuPay</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Order Total Summary Box -->
+                    <div class="checkout-summary-box">
+                        <div class="summary-total-row">
+                            <span>Amount to Pay:</span>
+                            <span class="summary-amount" id="checkout-total-amount">₹0</span>
+                        </div>
+                        <p class="summary-savings-note" id="checkout-savings-note">⚡ You saved money with student discounts!</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" id="place-order-btn">
+                        <span>Place Order Now 🚀</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🎉 ORDER CONFIRMATION / SUCCESS MODAL -->
+    <div class="modal-overlay" id="success-modal-overlay">
+        <div class="modal-card success-modal-card text-center">
+            <div class="success-icon-wrapper">
+                <span class="success-emoji">🎉</span>
+            </div>
+            <h2 class="success-title">Order Placed Successfully!</h2>
+            <p class="success-subtitle">Your food is being prepared with love! 👨‍🍳</p>
+
+            <div class="order-id-badge">
+                <span>Order ID:</span>
+                <strong id="success-order-id">#BB1024</strong>
+            </div>
+
+            <div class="delivery-eta-box">
+                <div class="eta-icon">🛵</div>
+                <div class="eta-text">
+                    <strong>Estimated Campus Delivery</strong>
+                    <span>15 - 20 Minutes</span>
+                </div>
+            </div>
+
+            <div class="success-details-box">
+                <h4>Order Summary</h4>
+                <div class="success-items-list" id="success-items-list">
+                    <!-- Populated by JS -->
+                </div>
+                <div class="success-total-row">
+                    <span>Total Amount Paid:</span>
+                    <strong id="success-total-paid">₹0</strong>
+                </div>
+            </div>
+
+            <div class="success-actions">
+                <button class="btn btn-primary" id="track-order-btn">View My Orders 📦</button>
+                <button class="btn btn-outline" id="continue-shopping-btn">Order More Food 🍔</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <div class="mobile-bottom-bar">
+        <a href="#home" class="mobile-bottom-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="#menu-section" class="mobile-bottom-item">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Menu</span>
+        </a>
+        <a href="#deals-section" class="mobile-bottom-item">
+            <i class="fa-solid fa-fire"></i>
+            <span>Deals</span>
+        </a>
+        <a href="#orders-section" class="mobile-bottom-item">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Orders</span>
+        </a>
+        <button class="mobile-bottom-item" id="mobile-bottom-cart-btn">
+            <div class="cart-icon-wrapper">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="mobile-cart-badge" id="mobile-cart-badge">0</span>
+            </div>
+            <span>Cart</span>
+        </button>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
